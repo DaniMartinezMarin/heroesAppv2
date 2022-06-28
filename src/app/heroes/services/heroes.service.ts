@@ -8,9 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class HeroesService {
 
+  urlHeroes: string = 'http://localhost:3000/heroes';
+
   constructor( private ngHttpClient: HttpClient ) { }
 
   getHeroesFromDb(): Observable<Hero[]> {
-    return this.ngHttpClient.get<Hero[]>('http://localhost:3000/heroes');
+    return this.ngHttpClient.get<Hero[]>(this.urlHeroes);
+  }
+
+  getHeroeById ( id: string ): Observable<Hero> {
+    return this.ngHttpClient.get<Hero>(`${this.urlHeroes}/${id}`);
   }
 }
