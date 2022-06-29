@@ -26,4 +26,12 @@ export class HeroesService {
     return this.ngHttpClient.get<Hero[]>(`${ this.apiUrl }/heroes?q=${ termino }&_limit=6`);
   }
 
+  agregarHeroe( heroe: Hero ): Observable<Hero> {
+    return this.ngHttpClient.post<Hero>(`${ this.apiUrl }/heroes`, heroe);
+  }
+
+  actualizarHeroe( heroe: Hero ): Observable<Hero> {
+    return this.ngHttpClient.put<Hero>(`${ this.apiUrl }/heroes/${ heroe.id }`, heroe);
+  }
+
 }
