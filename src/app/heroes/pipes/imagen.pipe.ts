@@ -9,10 +9,14 @@ export class ImagenPipe implements PipeTransform {
 
   transform(hero: Hero): string {
 
-    const path = `assets/heroes/${hero.id}.jpg`;
-    return path;
+    if ( !hero.id && !hero.alt_img) {
+      return 'assets/no-image.png';
+    } else if ( hero.alt_img ) {
+      return hero.alt_img;
+    } else {
+      return `assets/heroes/${hero.id}.jpg`;
+    }
 
-    /* return (existsSync(path)) ?  path : '`assets/heroes/no-image.png'; */
   }
 
 }
