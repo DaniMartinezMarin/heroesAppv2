@@ -34,4 +34,8 @@ export class HeroesService {
     return this.ngHttpClient.put<Hero>(`${ this.apiUrl }/heroes/${ heroe.id }`, heroe);
   }
 
+  borrarHeroe( id: string ): Observable<any> {
+    return this.ngHttpClient.delete<any>(`${ this.apiUrl }/heroes/${ id }`);
+  }
+
 }
