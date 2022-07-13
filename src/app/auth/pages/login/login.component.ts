@@ -16,9 +16,10 @@ export class LoginComponent {
 
     this.authService.login()
       .subscribe( (user: AuthInterface) => {
-        console.log(user);
-      });
 
-    this.router.navigate(['./heroes']);
+        if( user.id ) {
+          this.router.navigate(['./heroes']);
+        }
+      });
   }
 }

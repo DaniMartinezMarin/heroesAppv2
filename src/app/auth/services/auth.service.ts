@@ -21,7 +21,13 @@ export class AuthService {
   login(): Observable<AuthInterface>{
     return this.htpp.get<AuthInterface>(`${this.baseUrl}/usuarios/1`)
       .pipe(
-        tap( (auth: AuthInterface) => this._auth = auth )
+        tap( (auth: AuthInterface) => this._auth = auth ),
+        tap( (auth: AuthInterface) => localStorage.setItem('id', auth.id) )
       );
+  }
+
+  logout(): void {
+    this._auth = undefined;
+    localStorage.removeItem('id');
   }
 }
